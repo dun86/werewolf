@@ -19,14 +19,15 @@
   </div>
 
   <div class="form-group">
-    <%= form.label :daytime %>
-    <%= form.number_field :daytime, class: "form-control", required: true %>
+  <%= form.label :daytime %>
+  <%= form.select :daytime, (0..24).to_a, { include_blank: true }, class: "form-control" %>
   </div>
 
   <div class="form-group">
     <%= form.label :nighttime %>
-    <%= form.number_field :nighttime, class: "form-control", required: true %>
+    <%= form.select :nighttime, (0..24).to_a, { include_blank: true }, class: "form-control" %>
   </div>
+
 
   <div class="form-group">
     <%= form.label :status %>
