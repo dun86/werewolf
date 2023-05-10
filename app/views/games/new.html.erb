@@ -1,9 +1,9 @@
 <!-- app/views/games/new.html.erb -->
 <h1>新しいゲームを作成する</h1>
 
-<%= form_with(model: @game, url: games_path, local: true) do |form| %>
+<%= form_with(model: @game, url: games_path, local: true, class: "needs-validation", novalidate: true) do |form| %>
   <% if @game.errors.any? %>
-    <div id="error_explanation">
+    <div class="alert alert-danger">
       <h2><%= pluralize(@game.errors.count, "error") %> prohibited this game from being saved:</h2>
       <ul>
       <% @game.errors.full_messages.each do |message| %>
@@ -16,27 +16,31 @@
   <div class="form-group">
     <%= form.label :title %>
     <%= form.text_field :title, class: "form-control", required: true %>
+    <div class="invalid-feedback">タイトルを入力してください。</div>
   </div>
 
   <div class="form-group">
-  <%= form.label :daytime %>
-  <%= form.select :daytime, (0..24).to_a, { include_blank: true }, class: "form-control" %>
+    <%= form.label :daytime %>
+    <%= form.select :daytime, (0..24).to_a, { include_blank: true }, class: "form-control", required: true %>
+    <div class="invalid-feedback">昼の時間を選択してください。</div>
   </div>
 
   <div class="form-group">
     <%= form.label :nighttime %>
-    <%= form.select :nighttime, (0..24).to_a, { include_blank: true }, class: "form-control" %>
+    <%= form.select :nighttime, (0..24).to_a, { include_blank: true }, class: "form-control", required: true %>
+    <div class="invalid-feedback">夜の時間を選択してください。</div>
   </div>
-
 
   <div class="form-group">
     <%= form.label :status %>
     <%= form.text_field :status, class: "form-control", required: true %>
+    <div class="invalid-feedback">ステータスを入力してください。</div>
   </div>
 
   <div class="form-group">
     <%= form.label :winner %>
     <%= form.text_field :winner, class: "form-control", required: true %>
+    <div class="invalid-feedback">勝者を入力してください。</div>
   </div>
 
   <div class="form-group">
